@@ -36,11 +36,6 @@ Welcome to my Hyprland Rice configuration! This setup is designed to provide a c
     ```
 
 
-3. Copy the configuration files to their respective locations:
-    ```bash
-    cp -r .config/* ~/.config/
-    ```
-
 4. Update the Waybar and Wofi configuration:
     If your Waybar and Wofi configuration references a CSS file like:
     ```
