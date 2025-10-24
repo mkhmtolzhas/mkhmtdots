@@ -20,7 +20,7 @@ Welcome to my Hyprland Rice configuration! This setup is designed to provide a c
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/mkhmtolzhas/Invincible-Dots
+    git clone https://github.com/mkhmtolzhas/mkhmtdots
     cd Invincible-Dots
     ```
 
