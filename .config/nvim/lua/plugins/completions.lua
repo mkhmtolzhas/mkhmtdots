@@ -3,7 +3,17 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   {
+    -- Required by the `buffer` completion source configured below.
+    "hrsh7th/cmp-buffer",
+  },
+  {
+    -- The node language server indexes the whole cwd and can grow to several
+    -- GB, so stay off until `:Copilot enable` asks for it.
     "github/copilot.vim",
+    cmd = "Copilot",
+    init = function()
+      vim.g.copilot_enabled = false
+    end,
   },
   {
     "L3MON4D3/LuaSnip",

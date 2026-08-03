@@ -7,8 +7,8 @@ arguments = ["img", "--transition-type", "center"]
 set = false   # the wallpaper script sets it; matugen only generates colours
 
 [templates.hyprland]
-input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.config/hypr/matugen-colors.conf'
+input_path = '~/.config/matugen/templates/hyprland-colors.lua'
+output_path = '~/.config/hypr/matugen-colors.lua'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
@@ -30,3 +30,8 @@ output_path = '~/.cache/quickshell-colors.json'   # outside the QML config dir â
 [templates.keyboard]
 input_path = '~/.config/matugen/templates/keyboard-colors-rgb'
 output_path = '~/.config/keyboard/matugen-colors-rgb'
+
+[templates.nvim]
+input_path = '~/.config/matugen/templates/nvim-base16.lua'
+output_path = '~/.cache/matugen/nvim-base16.lua'
+post_hook = 'for s in "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/nvim.*; do [ -e "$s" ] && nvim --server "$s" --remote-send "<cmd>lua pcall(_G.MatugenReload)<cr>" 2>/dev/null; done'

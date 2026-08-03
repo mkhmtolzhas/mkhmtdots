@@ -25,9 +25,9 @@ if command -v matugen >/dev/null 2>&1; then
     echo "Generating matugen colors (scheme-content, dark)..."
     matugen image "$WALL" --type scheme-content --mode dark --prefer saturation || echo "matugen failed"
     hyprctl reload >/dev/null 2>&1 || true
-    # reload resets animations.conf → restore workspace slide direction set by quickshell
+    # reload resets animations.lua → restore workspace slide direction set by quickshell
     ws_style=$(cat "$HOME/.cache/quickshell-ws-anim" 2>/dev/null || echo slide)
-    hyprctl keyword animation "workspaces,1,5,wind,$ws_style" >/dev/null 2>&1 || true
+    hyprctl eval "hl.animation({ leaf = 'workspaces', enabled = true, speed = 5, bezier = 'wind', style = '$ws_style' })" >/dev/null 2>&1 || true
     pkill -USR1 kitty 2>/dev/null || true   # live-reload kitty colors (re-reads include)
     KEYBOARD_SCRIPT="$HOME/.config/keyboard/set-color-keyboard.sh"
     [ -x "$KEYBOARD_SCRIPT" ] && bash "$KEYBOARD_SCRIPT" >/dev/null 2>&1 &   # keyboard backlight from matugen

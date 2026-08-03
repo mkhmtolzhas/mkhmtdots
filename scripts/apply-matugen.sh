@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Generate matugen colours from a wallpaper and apply them everywhere
-# (quickshell, kitty, rofi, mako, hyprland, keyboard backlight).
+# (quickshell, kitty, rofi, mako, hyprland, nvim, keyboard backlight).
 #
 # Usage: ./scripts/apply-matugen.sh [/path/to/wallpaper]
 # With no argument it picks the first image in ~/.config/wallpapers.
@@ -34,7 +34,7 @@ fi
 if command -v hyprctl >/dev/null 2>&1; then
   hyprctl reload >/dev/null 2>&1 || true
   ws_style="$(cat "$HOME/.cache/quickshell-ws-anim" 2>/dev/null || echo slide)"
-  hyprctl keyword animation "workspaces,1,5,wind,$ws_style" >/dev/null 2>&1 || true
+  hyprctl eval "hl.animation({ leaf = 'workspaces', enabled = true, speed = 5, bezier = 'wind', style = '$ws_style' })" >/dev/null 2>&1 || true
 fi
 
 echo "Theme applied."

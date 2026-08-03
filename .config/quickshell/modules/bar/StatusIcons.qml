@@ -102,6 +102,52 @@ Grid {
         }
     }
 
+    // ── Network (WiFi) ──
+    Row {
+        id: network
+        spacing: Appearance.spacing.small
+
+        readonly property string statusText:
+            !Network.wifiEnabled && !Network.ethernet ? I18n.s.wifiOff
+            : Network.connected ? (Network.ssid + " · " + Network.signal + "%")
+            : Network.ethernet ? "Ethernet"
+            : I18n.s.disconnected
+
+        HoverHandler { id: netHover }
+        Tooltip {
+            target: network
+            show: netHover.hovered
+            text: network.statusText
+        }
+        TapHandler {
+            onTapped: Quickshell.execDetached(["kitty", "nmtui"])
+        }
+
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            height: Appearance.icon.size
+            verticalAlignment: Text.AlignVCenter
+            text: {
+                if (!Network.wifiEnabled && !Network.ethernet) return "󰖪";
+                if (Network.ethernet && !Network.connected) return "󰈀";
+                if (!Network.connected) return "󰤫";
+                return ["󰤟", "󰤟", "󰤢", "󰤥", "󰤨"][Network.bars];
+            }
+            color: (!Network.wifiEnabled && !Network.ethernet) ? Colours.subtext
+                   : (Network.connected || Network.ethernet) ? Colours.text : Colours.subtext
+            font.family: Appearance.font.family
+            font.pixelSize: Appearance.icon.size
+        }
+        Text {
+            visible: !root.vertical && Network.connected
+            anchors.verticalCenter: parent.verticalCenter
+            text: Network.signal + "%"
+            color: Colours.subtext
+            font.family: Appearance.font.family
+            font.pixelSize: Appearance.font.size
+        }
+    }
+
     // ── Bluetooth ──
     Row {
         id: bluetooth

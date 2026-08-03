@@ -1,0 +1,18 @@
+return {
+  base00 = "#{{colors.surface.dark.hex_stripped}}",
+  base01 = "#{{colors.surface_container.dark.hex_stripped}}",
+  base02 = "#{{colors.surface_container_high.dark.hex_stripped}}",
+  base03 = "#{{colors.outline.dark.hex_stripped}}",
+  base04 = "#{{colors.on_surface_variant.dark.hex_stripped}}",
+  base05 = "#{{colors.on_surface.dark.hex_stripped}}",
+  base06 = "#{{colors.on_surface.dark.hex_stripped}}",
+  base07 = "#{{colors.on_surface.dark.hex_stripped}}",
+  base08 = "#{{colors.error.dark.hex_stripped}}",
+  base09 = "#{{colors.primary.dark.hex_stripped}}",
+  base0A = "#{{colors.tertiary.dark.hex_stripped}}",
+  base0B = "#{{colors.secondary.dark.hex_stripped}}",
+  base0C = "#{{colors.on_tertiary_container.dark.hex_stripped}}",
+  base0D = "#{{colors.primary.dark.hex_stripped}}",
+  base0E = "#{{colors.on_primary_container.dark.hex_stripped}}",
+  base0F = "#{{colors.outline_variant.dark.hex_stripped}}",
+}

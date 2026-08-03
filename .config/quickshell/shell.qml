@@ -22,7 +22,7 @@ ShellRoot {
         // Apply now AND persist the style so the wallpaper script can re-apply
         // it after `hyprctl reload` (reload resets animations.conf otherwise).
         wsAnimProc.command = ["sh", "-c",
-            "hyprctl keyword animation 'workspaces,1,5,wind," + style + "'; " +
+            "hyprctl eval \"hl.animation({ leaf = 'workspaces', enabled = true, speed = 5, bezier = 'wind', style = '" + style + "' })\"; " +
             "echo '" + style + "' > \"$HOME/.cache/quickshell-ws-anim\""];
         wsAnimProc.running = true;
     }

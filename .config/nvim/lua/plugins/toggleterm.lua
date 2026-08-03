@@ -1,7 +1,9 @@
 return {
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-
-    vim.keymap.set("n", "<leader>tt", ":ToggleTerm<CR>", {}),
-    vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<CR>", {}),
-
+  "akinsho/toggleterm.nvim",
+  version = "*",
+  opts = {},
+  keys = {
+    { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+    { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle floating terminal" },
+  },
 }

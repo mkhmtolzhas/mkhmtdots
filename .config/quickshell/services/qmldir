@@ -2,3 +2,4 @@ singleton Brightness Brightness.qml
 singleton Visibilities Visibilities.qml
 singleton SystemStats SystemStats.qml
 singleton I18n I18n.qml
+singleton Network Network.qml
