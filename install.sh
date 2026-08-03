@@ -51,9 +51,17 @@ rewrite_hardcoded_home_paths() {
     return
   fi
 
+  if ! command -v perl >/dev/null 2>&1; then
+    log "perl not found — skipping home path rewrite (${#matches[@]} file(s) still point at ${LEGACY_HOME})"
+    return
+  fi
+
+  # The paths go in through the environment, never into the perl source, so
+  # slashes in them can't terminate the s/// and metacharacters stay literal.
   local file
   for file in "${matches[@]}"; do
-    perl -0pi -e 's/\Q'"$LEGACY_HOME"'\E/\Q'"$HOME"'\E/g' "$file"
+    LEGACY_HOME="$LEGACY_HOME" NEW_HOME="$HOME" \
+      perl -0pi -e 's/\Q$ENV{LEGACY_HOME}\E/$ENV{NEW_HOME}/g' "$file"
     log "Rewrote home path in ${file}"
   done
 }
